@@ -1,5 +1,7 @@
 local blog = { }
 
+local lfs = require 'lfs'
+
 local utils = require 'utils'
 
 -------------------------------------------------------------------------------

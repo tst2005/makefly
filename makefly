@@ -15,8 +15,10 @@ _=nil
 
 if not _VERSION:find(" 5%.1") then
 	print("Warning: the current makefly version is not compatible with Lua 5.2+")
-	require("os").exit(1)
+	--require("os").exit(1)
 end
+
+local lfs = require "lfs"
 
 --[[
 

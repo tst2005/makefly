@@ -121,7 +121,12 @@ THE SOFTWARE.
 local M = {}
 local MT = {__index = _G}
 setmetatable(M, MT)
-setfenv(1, M)
+
+if setfenv then
+	setfenv(1, M) -- for 5.1
+else
+	_ENV = M -- for 5.2
+end
 
 ----------------------------------------------------------------------
 -- Utility functions
@@ -1128,7 +1133,13 @@ end
 -- End of module
 ----------------------------------------------------------------------
 
-setfenv(1, _G)
+if setfenv then
+	setfenv(1, _G) -- for 5.1
+else
+	_ENV = assert(_G) -- for 5.2
+end
+
+
 M.lock(M)
 
 -- Expose markdown function to the world
